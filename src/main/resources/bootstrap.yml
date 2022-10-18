@@ -1,0 +1,86 @@
+management: 
+  endpoint: 
+    metrics: 
+      enabled: true
+    prometheus: 
+      enabled: true
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+  metrics: 
+    export: 
+      prometheus: 
+        enabled: true
+spring: 
+  application: 
+    name: openingtdforfd
+  cloud: 
+    config: 
+      failFast: false
+      retry: 
+        maxAttempts: 20
+      uri: ${CONFIG_SERVER_URI}
+  profiles: 
+    active: ${PROFILE:dev}
+  sleuth: 
+    sampler: 
+      percentage: 1
+  api: 
+    contacthandler: 
+      context-path: /ContactHandler/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: contacthandler430151-jolt.json
+    currentacc: 
+      context-path: /CurrentAccount/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: currentacc458512-jolt.json
+    customerprodsandservices: 
+      context-path: /CustomerProductsandServices/{customerproductsandservicesId}/In-forceProductproperty/{in-forceproductpropertyId}/Retrieve
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: customerprodsandservices884438-jolt.json
+    cworkbench: 
+      context-path: /CustomerWorkbench/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: cworkbench319316-jolt.json
+    ebranchops: 
+      context-path: /eBranchOperations/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: ebranchops511270-jolt.json
+    financialacc: 
+      context-path: /FinancialAccounting/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: financialacc885800-jolt.json
+    paymentorder: 
+      context-path: /PaymentOrder/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: paymentorder529076-jolt.json
+    pofservice: 
+      context-path: /PointofService/Initiate
+      hosturl: /pointofservice
+      jolt-filename: pofservice344639-jolt.json
+    positionkeeping: 
+      context-path: /PositionKeeping/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: positionkeeping358775-jolt.json
+    productdirectory: 
+      context-path: /ProductDirectory/{productdirectoryId}/Retrieve
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: productdirectory154435-jolt.json
+    serviceorder: 
+      context-path: /ServicingOrder/Initiate
+      hosturl: /serviceorder
+      jolt-filename: serviceorder525720-jolt.json
+    termdeposit: 
+      context-path: /TermDeposit/Initiate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: termdeposit373845-jolt.json
+    txauthorisation: 
+      context-path: /TransactionAuthorization/Evaluate
+      hosturl: v1/bian-3/core/payment/termdeposit/10.0.0/
+      jolt-filename: txauthorisation515153-jolt.json
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${mysql_pwd}
+    url: jdbc:mysql://${mysql_url}:3306/camunda
+    username: ${mysql_user}
